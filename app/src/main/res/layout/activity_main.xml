@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvNivelUV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nivel UV: "
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvEstadoVentilador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ventilador: Desconocido"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/btnEncenderApagar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Encender Ventilador"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>
