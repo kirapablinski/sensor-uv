@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private OkHttpClient client;
     private Handler handler;
 
-    private String apiUrlDatosUV = "https://api.thingspeak.com/channels/2788737/feeds/last.json?api_key=ZKCWFVK4S2OJAPOC";
+    private String apiUrlDatosUV = "https://api.thingspeak.com/channels/2788737/fields/1/last.json?api_key=ZKCWFVK4S2OJAPOC";
     private String apiUrlEnviarComando = "https://api.thingspeak.com/update?api_key=RZDE2VU25W07N7NM&field6=";
 
     private boolean ventiladorEncendido = false; // Estado inicial del ventilador
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Inicializar vistas
         tvNivelUV = findViewById(R.id.tvNivelUV);
-        tvEstadoVentilador = findViewById(R.id.tvEstadoVentilador);
+        tvEstadoVentilador = findViewById(R.id.tvEstadoLed);
         btnEncenderApagar = findViewById(R.id.btnEncenderApagar);
 
         client = new OkHttpClient();
@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     runOnUiThread(() -> {
                         String estado = ventiladorEncendido ? "Encendido" : "Apagado";
-                        tvEstadoVentilador.setText("Ventilador: " + estado);
-                        btnEncenderApagar.setText(ventiladorEncendido ? "Apagar Ventilador" : "Encender Ventilador");
+                        tvEstadoVentilador.setText("LED: " + estado);
+                        btnEncenderApagar.setText(ventiladorEncendido ? "Apagar LED" : "Encender LED");
                     });
                 }
             }
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 obtenerDatosUV();
-                handler.postDelayed(this, 5000); // Actualiza cada 2 segundos
+                handler.postDelayed(this, 30000); // Actualiza cada 30 segundos
             }
         }, 0);
     }
